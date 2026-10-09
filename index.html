@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For My Anisha 💜</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080812;color:#fff;font-family:'Poppins',sans-serif;overflow:hidden}
+#starBg{position:fixed;inset:0;z-index:0}
+section{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:14px;z-index:1}
+section.active{display:flex}
+.card{background:rgba(18,18,32,0.94);backdrop-filter:blur(16px);border:1px solid rgba(255,143,171,0.24);border-radius:28px;padding:22px;width:100%;max-width:460px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.6);max-height:92vh;overflow-y:auto}
+.btn{background:linear-gradient(135deg,#ff5c8a,#ff8fab);color:#fff;padding:12px 24px;border-radius:50px;margin:14px auto 0;display:block;border:0;cursor:pointer;font-weight:700;box-shadow:0 8px 20px rgba(255,92,138,0.45)}
+@keyframes flyL{0%{transform:translateX(-240px) rotate(-25deg) scale(0.6);opacity:0}60%{transform:translateX(20px) rotate(8deg) scale(1.08);opacity:1}100%{transform:translateX(0) rotate(0) scale(1);opacity:1}}
+@keyframes flyR{0%{transform:translateX(240px) rotate(25deg) scale(0.6);opacity:0}60%{transform:translateX(-20px) rotate(-8deg) scale(1.08);opacity:1}100%{transform:translateX(0) rotate(0) scale(1);opacity:1}}
+@keyframes zoomPop{0%{transform:scale(0) rotate(-10deg);opacity:0}50%{transform:scale(1.25) rotate(5deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes flipIn{0%{transform:perspective(400px) rotateY(90deg) scale(0.7);opacity:0}60%{transform:perspective(400px) rotateY(-15deg) scale(1.05);opacity:1}100%{transform:perspective(400px) rotateY(0) scale(1);opacity:1}}
+@keyframes elasticLeft{0%{transform:translateX(-260px) scaleX(1.5);opacity:0}40%{transform:translateX(25px) scaleX(0.9);opacity:1}100%{transform:translateX(0) scaleX(1);opacity:1}}
+@keyframes wiggle{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.item{opacity:0;background:rgba(255,255,255,0.06);padding:12px 14px;border-radius:14px;margin-top:10px;text-align:left;border:1px solid rgba(255,143,171,0.15);font-size:14px;line-height:1.5}
+.item.flyL{animation:flyL 0.85s cubic-bezier(0.68,-0.55,0.27,1.55) forwards}
+.item.flyR{animation:flyR 0.85s cubic-bezier(0.68,-0.55,0.27,1.55) forwards}
+.item.zoom{animation:zoomPop 0.75s cubic-bezier(0.68,-0.55,0.27,1.55) forwards}
+.item.flip{animation:flipIn 0.85s ease-out forwards}
+.item.elastic{animation:elasticLeft 0.95s cubic-bezier(0.68,-0.55,0.27,1.55) forwards}
+</style>
+</head>
+<body>
+<canvas id="starBg"></canvas>
+<audio id="bgMusic" loop><source src="https://cdn.pixabay.com/audio/2022/10/30/audio_8ef11c2d8e.mp3" type="audio/mpeg"></audio>
+<div id="soundBtn" onclick="toggleSound()" style="position:fixed;top:16px;left:12px;z-index:100;background:rgba(255,255,255,0.12);padding:8px 13px;border-radius:50px;font-size:11px;cursor:pointer;border:1px solid rgba(255,255,255,0.18)">🔊 Sound On</div>
+
+<!-- 1 FOYLA - FIXED NO TEXT + FAST -->
+<section id="s1" class="active"><div class="card" style="max-width:480px;padding:14px;background:rgba(14,8,20,0.98)">
+<div style="width:100%;height:410px;background:radial-gradient(ellipse at center,#3a1020 0%,#1a0a14 70%);border-radius:18px;position:relative;overflow:hidden;border:1px solid rgba(255,92,138,0.2)">
+<canvas id="firstCanvas" style="width:100%;height:100%"></canvas>
+<div id="firstTextOverlay" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;opacity:0;transition:0.6s">
+<h1 style="color:#fff;font-size:22px;font-weight:800;text-shadow:0 0 15px #ff5c8a">Happy Birthday</h1>
+<h1 style="color:#ff8fab;font-size:28px;font-weight:800;margin-top:4px;text-shadow:0 0 20px #ff5c8a">Anisha 💜</h1>
+</div>
+<div style="position:absolute;bottom:5px;left:12px;font-size:26px;z-index:3">🧸</div>
+<div style="position:absolute;bottom:5px;right:12px;font-size:26px;z-index:3">🧸</div>
+</div>
+<h2 style="color:#ff8fab;font-weight:800;margin-top:10px;font-size:15px" id="firstText">For You Anisha 💜</h2>
+<div class="btn" id="firstBtn" style="display:none" onclick="go(2);playMusic()">Continue →</div></div></section>
+
+<!-- 2 BIRTHDAY -->
+<section id="s2"><div class="card"><h2 style="color:#ff8fab;font-weight:800">Happy Birthday, Anisha! 🎂💙</h2><p style="margin-top:14px;line-height:1.7;font-size:14px;text-align:left">May your birthday be as beautiful and special as you are. I hope every moment of your life is filled with happiness, peace, love, and beautiful memories. 🥹💜<br><br>Never forget how special you are, and always keep that beautiful smile alive.<br><br>Wishing you nothing but the best today and always. 🫶🏻<br><br>Again, Happy Birthday! 🎂🐸💜</p><div class="btn" onclick="go(3)">Next →</div></div></section>
+
+<!-- 3 SPECIAL -->
+<section id="s3"><div class="card"><h2 style="color:#ff8fab;font-weight:800">Special For You ✨</h2><p style="margin-top:14px;font-style:italic;line-height:1.8">When you're by my side, the whole world feels so much more beautiful and colorful.</p><p style="margin-top:12px;font-size:20px">💜💙💖</p><div class="btn" onclick="go(4)">Why You Special? → 💖</div></div></section>
+
+<!-- 4 REASONS -->
+<section id="s4"><div class="card"><h2 style="color:#ff8fab;font-weight:800">Why You Are Special? 💖</h2>
+<div class="item" id="r1">💙 1. Your smile makes my day brighter</div><div class="item" id="r2">💜 2. You have the kindest heart</div><div class="item" id="r3">🫶🏻 3. You make everything colorful</div><div class="item" id="r4">🥹 4. You are always so caring</div><div class="item" id="r5">🎂 5. You are one in a million, Anisha!</div><div class="btn" id="reasonBtn" style="display:none" onclick="go(5)">Next → 🌌</div></div></section>
+
+<!-- 5 B YOU VS STARS -->
+<section id="s5"><div class="card"><h2 style="color:#ff8fab;font-weight:800">You vs Stars 🌌💜</h2>
+<div class="item" id="l1">🌟 Stars twinkle - But you shine brighter</div>
+<div class="item" id="l2">🌙 Moon is beautiful - But you are more</div>
+<div class="item" id="l3">☀️ Sun gives light - But you give happiness</div>
+<div class="item" id="l4">🌌 Universe is big - But my world is you</div>
+<div class="item" id="l5">💜 Stars are many - But you are one in a million!</div>
+<div class="btn" id="littleBtn" style="display:none" onclick="go(6)">Next → 💪</div></div></section>
+
+<!-- 6 MOTIVATION -->
+<section id="s6"><div class="card"><h2 style="color:#ff8fab;font-weight:800">You Are Unstoppable 💪</h2>
+<div class="item" style="background:linear-gradient(135deg,rgba(255,92,138,0.12),rgba(139,92,255,0.12))" id="mo1">🌟 Believe - You can make dreams true</div><div class="item" style="background:linear-gradient(135deg,rgba(255,92,138,0.12),rgba(139,92,255,0.12))" id="mo2">🚀 Shine - Your potential is limitless</div><div class="item" style="background:linear-gradient(135deg,rgba(255,92,138,0.12),rgba(139,92,255,0.12))" id="mo3">💜 Strong - Challenges make you stronger</div><div class="item" style="background:linear-gradient(135deg,rgba(255,92,138,0.12),rgba(139,92,255,0.12))" id="mo4">👑 Special - You are capable of amazing things!</div><div class="btn" id="moBtn" style="display:none" onclick="go(7)">Next → 😍</div></div></section>
+
+<!-- 7 CUTENESS -->
+<section id="s7"><div class="card"><h2 style="color:#ff8fab;font-weight:800">Your Cuteness 😍💜</h2>
+<div class="item" id="c1">👀 Your Eyes - Like stars shining</div><div class="item" id="c2">😊 Your Smile - My favorite view</div><div class="item" id="c3">🎙️ Your Voice - Sweetest melody</div><div class="item" id="c4">✨ Your Everything - Perfect in every way</div><div class="btn" id="cuteBtn" style="display:none" onclick="go(8)">My Promises → 🤝</div></div></section>
+
+<!-- 8 PROMISES -->
+<section id="s8"><div class="card"><h2 style="color:#ff8fab;font-weight:800">My Promises 🤝💙</h2>
+<div class="item" style="background:linear-gradient(135deg,rgba(92,138,255,0.12),rgba(255,92,138,0.12))" id="p1">💙 I will always be with you</div><div class="item" style="background:linear-gradient(135deg,rgba(92,138,255,0.12),rgba(255,92,138,0.12))" id="p2">💜 I will always support you</div><div class="item" style="background:linear-gradient(135deg,rgba(92,138,255,0.12),rgba(255,92,138,0.12))" id="p3">🫶🏻 I will always care for you</div><div class="item" style="background:linear-gradient(135deg,rgba(92,138,255,0.12),rgba(255,92,138,0.12))" id="p4">🥹 I will always make you smile</div><div class="btn" id="promiseBtn" style="display:none" onclick="go(9)">Make A Wish → 🎆</div></div></section>
+
+<!-- 9 WISH -->
+<section id="s9"><div class="card"><h2 style="color:#ff8fab;font-weight:800">Make A Wish Anisha! 🎆</h2><p style="font-size:12px;color:#fff8;margin-top:6px">Close your eyes, make a wish and click the star!</p><div style="width:100%;height:260px;background:#0f0a1a;border-radius:20px;margin-top:12px;position:relative;overflow:hidden;border:1px solid rgba(255,143,171,0.2);display:flex;align-items:center;justify-content:center"><span id="wishStar" onclick="makeWish()" style="font-size:68px;cursor:pointer;filter:drop-shadow(0 0 20px #ff8fab)">⭐</span><canvas id="fireCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas></div><p id="wishText" style="margin-top:10px;font-size:13px;color:#ff8fab;font-weight:600;opacity:0">Your wish will come true! 💜✨</p><div class="btn" id="wishBtn" style="display:none" onclick="go(10)">Your Cake → 🎂</div></div></section>
+
+<!-- 10 CAKE HBD ANISHA -->
+<section id="s10"><div class="card" style="max-width:460px;background:rgba(14,10,20,0.96)"><h2 style="color:#ff8fab;font-weight:800">Your Cake & Gift! 🎂🧸</h2><div style="width:100%;height:310px;background:#1a0a14;border-radius:20px;margin-top:10px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column">
+<div id="t1" style="width:210px;height:62px;background:linear-gradient(180deg,#ff8fab,#ff5c8a);border:4px solid #1e1e1e;border-radius:16px;box-shadow:0 7px 0 #1e1e1e;display:flex;align-items:center;justify-content:center;position:absolute;bottom:34px;opacity:0;transform:translateY(200px);transition:0.7s cubic-bezier(0.68,-0.55,0.27,1.55)">🍒 <span style="margin:0 18px;background:#fff;padding:2px 10px;border-radius:20px;border:2px solid #222">🎀</span> 🍒</div>
+<div id="t2" style="width:150px;height:52px;background:linear-gradient(180deg,#ffc2d1,#ffd1dc);border:4px solid #1e1e1e;border-radius:13px;box-shadow:0 5px 0 #1e1e1e;display:flex;align-items:center;justify-content:center;position:absolute;bottom:92px;opacity:0;transform:translateY(200px);transition:0.7s">🍒 🎀 🍒</div>
+<div id="t3" style="width:118px;height:66px;background:#fff;border:4px solid #1e1e1e;border-radius:13px;box-shadow:0 5px 0 #1e1e1e;display:flex;flex-direction:column;align-items:center;justify-content:center;position:absolute;bottom:144px;opacity:0;transform:scale(0);transition:0.7s"><span style="font-size:10px;color:#ff5c8a;font-weight:900;letter-spacing:1px">HBD</span><span style="font-size:13px;color:#ff2e7a;font-weight:900;margin-top:2px">ANISHA 💓</span></div>
+</div><div id="teddyFinal" style="margin-top:14px;opacity:0;transition:0.8s"><span style="font-size:46px">🧸</span><span style="font-size:32px;margin-left:6px">🎁</span><p style="margin-top:6px;color:#ff8fab;font-size:12px;font-weight:600">Just For You Anisha 💜 Happy Birthday!</p></div><div class="btn" id="cakeBtn" style="display:none" onclick="location.reload()">Replay ↺</div></div></section>
+
+<script>
+let starCanvas=document.getElementById('starBg'), sCtx=starCanvas.getContext('2d'); function rs(){starCanvas.width=innerWidth;starCanvas.height=innerHeight} rs(); addEventListener('resize',rs);
+let stars=[]; for(let i=0;i<20;i++)stars.push({type:'star',x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.6+0.8,s:Math.random()*0.5+0.2,op:Math.random()*0.5+0.3});
+for(let i=0;i<10;i++)stars.push({type:'heart',x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*3+2,s:Math.random()*0.4+0.15,op:Math.random()*0.4+0.2});
+(function drawS(){sCtx.clearRect(0,0,starCanvas.width,starCanvas.height); for(let st of stars){st.y+=st.s; if(st.y>innerHeight+20){st.y=-20;st.x=Math.random()*innerWidth} if(st.type==='star'){sCtx.beginPath(); sCtx.arc(st.x,st.y,st.r,0,6.28); sCtx.fillStyle=`rgba(255,255,255,${st.op})`; sCtx.shadowBlur=6; sCtx.shadowColor='#ff8fab'; sCtx.fill();}else{sCtx.font=`${st.r*2}px serif`; sCtx.globalAlpha=st.op; sCtx.fillText('💜',st.x,st.y); sCtx.globalAlpha=1;}} requestAnimationFrame(drawS);})();
+
+function startFirstVideo(){
+let cv=document.getElementById('firstCanvas'), ctx=cv.getContext('2d');
+function resize(){cv.width=cv.offsetWidth*2; cv.height=cv.offsetHeight*2;} resize();
+let W=cv.width,H=cv.height; let cx=W/2, cy=H/2+20, sc=14;
+let points=[]; for(let a=0;a<6.28;a+=0.08){let hx=16*Math.pow(Math.sin(a),3); let hy=-(13*Math.cos(a)-5*Math.cos(2*a)-2*Math.cos(3*a)-Math.cos(4*a)); points.push({x:cx+hx*sc,y:cy+hy*sc});}
+class HeartP{constructor(sx,sy,tx,ty,delay){this.x=sx;this.y=sy;this.tx=tx;this.ty=ty;this.delay=delay;this.t=0;this.s=Math.random()*2.8+1.5;this.active=false;this.arrived=false;}
+update(){if(this.delay>0){this.delay--;return false;}this.active=true;this.t+=0.055;if(this.t>=1){this.x=this.tx;this.y=this.ty;this.arrived=true;return true;}this.x=this.x+(this.tx-this.x)*0.12; this.y=this.y+(this.ty-this.y)*0.12; return false;}
+draw(ctx){if(!this.active)return;ctx.fillStyle=this.arrived?'#ff2e7a':'#ff8fab';ctx.shadowColor='#ff2e7a';ctx.shadowBlur=this.arrived?18:10;ctx.beginPath();let x=this.x,y=this.y,s=this.s;ctx.moveTo(x,y-s*0.5);ctx.bezierCurveTo(x,y-s*0.8,x-s*0.6,y-s*0.8,x-s*0.6,y-s*0.2);ctx.bezierCurveTo(x-s*0.6,y+s*0.2,x,y+s*0.6,x,y+s*0.8);ctx.bezierCurveTo(x,y+s*0.6,x+s*0.6,y+s*0.2,x+s*0.6,y-s*0.2);ctx.bezierCurveTo(x+s*0.6,y-s*0.8,x,y-s*0.8,x,y-s*0.5);ctx.fill();ctx.shadowBlur=0;}}
+let ps=[]; for(let i=0;i<points.length;i++){let isLeft=i%2==0; let sx=isLeft?60:W-60; let sy=H-40; ps.push(new HeartP(sx,sy,points[i].x,points[i].y,i*0.35))}
+function loop(){ctx.fillStyle='#1a0a14'; ctx.fillRect(0,0,W,H); ctx.fillStyle='rgba(255,255,255,0.15)'; for(let k=0;k<12;k++){ctx.beginPath();ctx.arc(Math.random()*W,Math.random()*H,0.9,0,6.28);ctx.fill();} let arrived=0; for(let p of ps){p.update(); if(p.arrived) arrived++; p.draw(ctx);} if(arrived>ps.length*0.85){document.getElementById('firstTextOverlay').style.opacity='1'; document.getElementById('firstText').innerText='Happy Birthday Anisha 💜✨'; document.getElementById('firstBtn').style.display='block'; return;} requestAnimationFrame(loop);} loop();
+}
+startFirstVideo();
+
+let cur=1,isPlaying=false,music=document.getElementById('bgMusic'); music.volume=0.32;
+function playMusic(){if(!isPlaying){music.play().then(()=>{isPlaying=true}).catch(()=>{})}}
+function toggleSound(){if(isPlaying){music.pause();document.getElementById('soundBtn').innerText='🔇 Sound Off';isPlaying=false}else{music.play();document.getElementById('soundBtn').innerText='🔊 Sound On';isPlaying=true}}
+function go(n){document.getElementById('s'+cur).classList.remove('active');document.getElementById('s'+n).classList.add('active');cur=n;if(n==4)startReason();if(n==5)startLittle();if(n==6)startMo();if(n==7)startCute();if(n==8)startPromise();if(n==10)startCake();}
+function startReason(){let seq=[{id:'r1',cls:'flyL'},{id:'r2',cls:'flyR'},{id:'r3',cls:'zoom'},{id:'r4',cls:'flip'},{id:'r5',cls:'elastic'}];let i=0;function nxt(){if(i<seq.length){let el=document.getElementById(seq[i].id);el.classList.add(seq[i].cls);el.style.opacity=1;i++;setTimeout(nxt,800);}else setTimeout(()=>document.getElementById('reasonBtn').style.display='block',600);}nxt();}
+function startLittle(){let seq=[{id:'l1',cls:'flyL'},{id:'l2',cls:'flyR'},{id:'l3',cls:'zoom'},{id:'l4',cls:'flip'},{id:'l5',cls:'elastic'}];let i=0;function nxt(){if(i<seq.length){let el=document.getElementById(seq[i].id);el.classList.add(seq[i].cls);el.style.opacity=1;i++;setTimeout(nxt,750);}else setTimeout(()=>document.getElementById('littleBtn').style.display='block',600);}nxt();}
+function startMo(){let seq=[{id:'mo1',cls:'flyL'},{id:'mo2',cls:'flyR'},{id:'mo3',cls:'flip'},{id:'mo4',cls:'elastic'}];let i=0;function nxt(){if(i<seq.length){let el=document.getElementById(seq[i].id);el.classList.add(seq[i].cls);el.style.opacity=1;i++;setTimeout(nxt,700);}else setTimeout(()=>document.getElementById('moBtn').style.display='block',600);}nxt();}
+function startCute(){let seq=[{id:'c1',cls:'flyL'},{id:'c2',cls:'flyR'},{id:'c3',cls:'zoom'},{id:'c4',cls:'flip'}];let i=0;function nxt(){if(i<seq.length){let el=document.getElementById(seq[i].id);el.classList.add(seq[i].cls);el.style.opacity=1;i++;setTimeout(nxt,750);}else setTimeout(()=>document.getElementById('cuteBtn').style.display='block',600);}nxt();}
+function startPromise(){let seq=[{id:'p1',cls:'flyL'},{id:'p2',cls:'flyR'},{id:'p3',cls:'zoom'},{id:'p4',cls:'elastic'}];let i=0;function nxt(){if(i<seq.length){let el=document.getElementById(seq[i].id);el.classList.add(seq[i].cls);el.style.opacity=1;i++;setTimeout(nxt,700);}else setTimeout(()=>document.getElementById('promiseBtn').style.display='block',600);}nxt();}
+function makeWish(){let star=document.getElementById('wishStar');star.style.transform='scale(0)';star.style.opacity='0';let cv=document.getElementById('fireCanvas'),ctx=cv.getContext('2d');cv.width=cv.offsetWidth*2;cv.height=cv.offsetHeight*2;let fireworks=[];function createFire(x,y){let parts=[];for(let k=0;k<25;k++){let ang=Math.random()*6.28,spd=Math.random()*4+1;parts.push({x:x,y:y,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd,life:60,cl:`hsl(${320+Math.random()*40},100%,70%)`})}fireworks.push(parts)}createFire(cv.width/2,cv.height/2);setTimeout(()=>createFire(cv.width*0.3,cv.height*0.4),300);setTimeout(()=>createFire(cv.width*0.7,cv.height*0.5),600);(function anim(){ctx.fillStyle='rgba(15,10,26,0.18)';ctx.fillRect(0,0,cv.width,cv.height);for(let fw of fireworks){for(let p of fw){p.x+=p.vx;p.y+=p.vy;p.vy+=0.06;p.life--;ctx.fillStyle=p.cl;ctx.shadowBlur=8;ctx.shadowColor=p.cl;ctx.beginPath();ctx.arc(p.x,p.y,2.5,0,6.28);ctx.fill();}}fireworks=fireworks.filter(fw=>fw.some(p=>p.life>0));if(fireworks.length>0)requestAnimationFrame(anim);})();document.getElementById('wishText').style.opacity='1';setTimeout(()=>document.getElementById('wishBtn').style.display='block',1400);}
+function startCake(){setTimeout(()=>{let t1=document.getElementById('t1');t1.style.opacity=1;t1.style.transform='translateY(0)';setTimeout(()=>t1.style.animation='wiggle 0.7s infinite',700)},300);setTimeout(()=>{let t2=document.getElementById('t2');t2.style.opacity=1;t2.style.transform='translateY(0)';setTimeout(()=>t2.style.animation='bounce 0.6s infinite',700)},700);setTimeout(()=>{let t3=document.getElementById('t3');t3.style.opacity=1;t3.style.transform='scale(1)';setTimeout(()=>t3.style.animation='float 0.8s infinite',700)},1100);setTimeout(()=>{document.getElementById('teddyFinal').style.opacity=1;},1500);setTimeout(()=>{document.getElementById('cakeBtn').style.display='block'},2000);}
+</script>
+</body>
+</html>
